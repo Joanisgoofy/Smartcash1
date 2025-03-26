@@ -10,8 +10,7 @@ const Heros = () => {
       </div>
       <div className='flex flex-col justify-center items-start gap-8'>
         <h1  className='text-blue-700 font-extrabold dark:text-white'>WHO WE ARE</h1>
-        <h1 className='text-black text-[40px] font-semibold leading-10 dark:text-white'>We Help Clients Buy And Sell Houses Since 2001</h1>
-        <p className='text-x1 text-gray-600 dark:text-white text-justify'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, sit porro non facere minima recusandae commodi quisquam illo, error deserunt dolore. Nam assumenda blanditiis ullam incidunt?</p>
+        <h1 className='text-black text-[15px] font-semibold leading-10 dark:text-white'>Smart-OT is a leading and innovative Payment Service with an overarching vision of bridging the financial divide by providing rural and urban Nigerians secured and reliable banking services as well as supporting the Central Bank of Nigeria’s (CBN) drive to ensure financial Inclusion for every Nigerian. With its corporate headquarters in Lagos, Nigeria, Smart-OT’s overarching objective is to ensure financial inclusion for everyone including persons in the furthest and remotest parts of Nigeria.</h1>
         <button className='bg-red-600 dark:bg-red-700 hover:bg-black  dark:hover:text-black text-ig p-4 text-white font-semibold rounded-xl cursor-pointer transform hover:scale-110 transition-transform duration-300'>READ MORE</button>
 
       </div>

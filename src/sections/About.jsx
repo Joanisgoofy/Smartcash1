@@ -35,7 +35,7 @@ const AboutUs = () => {
             <h3 className="text-black-500 font-bold text-3xl">ABOUT US</h3>
           </div>
 
-          <div>
+          <div className="flex flex-col md:flex-row items-center gap-8 flex-1">
             <h4>
               <span className="font-bold">SMART-OT</span> is a leading and
               innovative Payment Service Bank with an overarching vision of
@@ -47,6 +47,10 @@ const AboutUs = () => {
               to ensure financial inclusion for everyone <br></br> including persons in the
               furthest and remotest parts of Nigeria.
             </h4>
+          </div>
+
+          <div className="">
+              <img src={Logo} alt="about image" className='rounded-2xl lg:w-[500px] lg:h-[600px]' />
           </div>
         </section>
 

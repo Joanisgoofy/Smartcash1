@@ -38,7 +38,12 @@ const Signup = () => {
 
     setLoading(true);
     try {
-      const response = await SignupLogic(formData);
+      const response = await SignupLogic({
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
+      
       if (response.success) {
         navigate('/login');
       } else {
