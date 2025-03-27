@@ -24,7 +24,7 @@ export async function SignupLogic({ username, email, password }) {
 
 export const LoginLogic = async ({ email, password }) => {
     try {
-      const response = await fetch('https://dark-sissie-wfdhammy-78750b0c.koyeb.app/user/v1/login', {
+      const response = await fetch('login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,5 +43,41 @@ export const LoginLogic = async ({ email, password }) => {
       return { success: false, message: error.message };
     }
   };
-  
+
+
+  export async function fetchBalance() {
+    try {
+        const walletID = localStorage.getItem('walletId');
+        
+        if (!walletID) {
+            throw new Error('Wallet ID not found in localStorage');
+        }
+
+        const response = await fetch(
+            `https://dark-sissie-wfdhammy-78750b0c.koyeb.app/wallet/v1/${walletID}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add Authorization header if required:
+                    // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            }
+        );
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to fetch balance');
+        }
+
+        const data = await response.json();
+        return data.balance; // Directly return balance (no need for `await` since data is already resolved)
+        
+    } catch (error) {
+        console.error('Error fetching balance:', error.message);
+        // Optionally rethrow to let the caller handle it
+        throw error; 
+    }
+}
+
     

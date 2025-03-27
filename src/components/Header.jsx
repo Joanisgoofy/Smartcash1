@@ -1,15 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 import { HiMenu, HiX } from "react-icons/hi"; // Icons for mobile menu
 import Logo from "../assets/Logo.png";
+// import {fetchBalance} from "../api/auth";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [wallet, setWallet] = useState();
 
-  const wallet = localStorage.getItem('walletBalance')
+  const fetchBalance = async () => {
+    try {
+      const walletID = localStorage.getItem('walletId');
+        
+      if (!walletID) {
+          throw new Error('Wallet ID not found in localStorage');
+      }
+
+      const response = await fetch(
+          `https://dark-sissie-wfdhammy-78750b0c.koyeb.app/wallet/v1/${walletID}`,
+          {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  // Add Authorization header if required:
+                  // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              },
+          }
+      );
+
+      if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to fetch balance');
+      }
+
+      const data = await response.json();
+      // console.log(data)
+      setWallet(data.balance)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchBalance();
+  }, [])
+  // const wallet = fetchBalance();
   const token = localStorage.getItem('auth_token')
-  console.log(wallet)
+  // console.log(wallet)
 
   return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
@@ -43,8 +81,8 @@ const Header = () => {
 
        {/* Login Button */}
        <div className="hidden md:block">
-          {wallet && token ? (
-            <Button gradientDuoTone="cyanToBlue">{`Wallet Balance: ₦${wallet}`}</Button>
+          {token ? (
+            <Button gradientDuoTone="cyanToBlue">{`Wallet Balance: ₦${wallet || "Not available"}`}</Button>
           ): (
             <Link to="/login">
             <Button gradientDuoTone="cyanToBlue">Login / Signup</Button>
