@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SignupLogic from '../api/auth';
+import {SignupLogic} from '../api/auth';
 
 const Signup = () => {
   const [formData, setFormData] = useState({

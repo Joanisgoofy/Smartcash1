@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginLogic from '../api/auth'; // Import the login logic function
+import { LoginLogic } from '../api/auth'; // Import the correct function
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -16,26 +16,72 @@ const LoginPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError(null);
+  //   setLoading(true);
+  
+  //   try {
+  //     const response = await LoginLogic({
+  //       email: formData.email,
+  //       password: formData.password,
+  //     });
+  
+  //     console.log('API Response:', response); // Debugging
+  
+  //     if (response.success) {
+  //       localStorage.setItem('auth_token', response.token);
+  //       navigate('/hero');
+  //     } else {
+  //       setError(response.message || 'Invalid credentials');
+  //     }
+  //   } catch (err) {
+  //     console.error('Login error:', err);
+  //     setError('An error occurred. Please try again.');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
     setLoading(true);
+    console.log("Sending:", formData);
 
     try {
-      const response = await LoginLogic(formData);
-      if (response.success) {
-        localStorage.setItem('auth_token', response.token); // Store token
-        navigate('/dashboard'); // Redirect after successful login
-      } else {
-        setError(response.message);
+      const response = await fetch("https://dark-sissie-wfdhammy-78750b0c.koyeb.app/user/v1/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        console.log("Full error response:", data);
+        throw new Error(data.message || `Login failed with status ${response.status}`);
       }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
+      
+      console.log("Login successful:", data);
+      setError(null);
+
+      if (response.ok) {
+        localStorage.setItem('auth_token', data.access);
+        localStorage.setItem('walletBalance', data.wallet.balance);
+        localStorage.setItem('userId', data.data.id);
+        localStorage.setItem('userEmail', data.data.email);
+        localStorage.setItem('walletId', data.wallet.id);
+        navigate('/home');
+      }
+    } catch (error) {
+      console.error("Login error:", error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
-  };
-
+}
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">

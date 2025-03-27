@@ -11,6 +11,7 @@ import Heros from './sections/Heros.jsx'
 import { Footer } from 'flowbite-react'
 import About from './sections/About.jsx'
 import Help from './sections/Help.jsx'
+import FundWalletPage from './Pages/FundWallet.jsx'
 
 const root = document.getElementById('root');
 
@@ -19,13 +20,14 @@ ReactDOM.createRoot(root).render(
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/home" element={<App />} />
+          <Route path="/home" element={<App />} /> 
           <Route path="/services" element={<Services />} />
           <Route path="/agent" element={<Agent />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/fund" element={<FundWalletPage />} />
           
     </Routes>
     </BrowserRouter>

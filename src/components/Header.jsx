@@ -7,6 +7,10 @@ import Logo from "../assets/Logo.png";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const wallet = localStorage.getItem('walletBalance')
+  const token = localStorage.getItem('auth_token')
+  console.log(wallet)
+
   return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
        {/* Logo */}
@@ -39,9 +43,13 @@ const Header = () => {
 
        {/* Login Button */}
        <div className="hidden md:block">
-          <Link to="/login">
+          {wallet && token ? (
+            <Button gradientDuoTone="cyanToBlue">{`Wallet Balance: ₦${wallet}`}</Button>
+          ): (
+            <Link to="/login">
             <Button gradientDuoTone="cyanToBlue">Login / Signup</Button>
           </Link>
+          )}
         </div>
 
       {/* Mobile Navigation */}

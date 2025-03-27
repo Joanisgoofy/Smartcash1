@@ -9,8 +9,6 @@ import LoginPage from './Pages/LoginPage'; // Import LoginPage
 import Signup from "./Pages/Signup"; // Import Signup
 import AboutUs from './sections/About';
 
-
-
 const App = () => {
   return (
     <div id='home' className="app-container">
