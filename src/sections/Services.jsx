@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { useState } from 'react';
 import { service } from '../components/export';
 import Logo from '../assets/Logo.png';
 import '../App.css';
->>>>>>> 9901207eadb5181cc75d4530cb34acf3982d8b44
 import { Link } from 'react-router-dom';
 import { Footer } from "flowbite-react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
@@ -13,8 +9,6 @@ import {
   MdOutlineArrowDownward, MdAccountBalance, MdAddCircleOutline, MdSmartphone, 
   MdOutlineNetworkCell, MdReceiptLong, MdElectricBolt, MdOutlineLock, MdSportsSoccer 
 } from 'react-icons/md';
-import Logo from '../assets/Logo.png';
-import '../App.css';
 
 const services = [
     { icon: MdOutlineArrowDownward, title: 'Withdraw' },
@@ -98,22 +92,10 @@ const Services = () => {
         </div>
         <div className='nav-links'>
           <Link to='/home'>Home</Link>
-<<<<<<< HEAD
           <Link to='/services'>Services</Link>
           <Link to='/help'>Help & Support</Link>
           <Link to='/about'>About Us</Link>
           <Link to='/agent'>Become an Agent</Link>
-        </div>
-        <div className='cta'>
-          <Link to='/login'>
-            <button>Login / Signup</button>
-          </Link>
-=======
-          <Link to="/services">Services</Link>
-          <Link to="/help">Help & Support</Link>
-          <Link to="/about">About Us</Link>
-          <Link to="/agent">Become an Agent</Link>
->>>>>>> 9901207eadb5181cc75d4530cb34acf3982d8b44
         </div>
       </header>
 
@@ -126,7 +108,6 @@ const Services = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-<<<<<<< HEAD
           {services.map((item, index) => (
             <Link to={item.link || '#'} key={index}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border-b-4 border-red-500 hover:scale-105 transition-transform cursor-pointer">
@@ -139,106 +120,9 @@ const Services = () => {
                 </p>
               </div>
             </Link>
-=======
-          {service.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border-b-4 border-red-500 hover:scale-105 transition-transform cursor-pointer"
-              onClick={() => item.title === "Add Money" ? setShowAddMoneyModal(true) : null}
-            >
-              <div className="flex items-center justify-center w-16 h-16 bg-red-200 rounded-full mb-4">
-                <item.icon className="text-red-600 text-3xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
-                {item.description || `Secure and reliable ${item.title.toLowerCase()} services.`}
-              </p>
-            </div>
->>>>>>> 9901207eadb5181cc75d4530cb34acf3982d8b44
           ))}
         </div>
       </section>
-
-<<<<<<< HEAD
-      <Footer id="help" container className='bg-black'>
-        <div className="w-full">
-          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div className='logo'>
-              <h1 className='text-gray-400'>Smart-OT</h1>
-              <img src={Logo} alt="Smart-OT Logo" width="100" />
-            </div>
-            <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-              <div>
-                <Footer.Title title="about" />
-                <Footer.LinkGroup col>
-                  <Footer.Link href="#">Flowbite</Footer.Link>
-                  <Footer.Link href="#">Tailwind CSS</Footer.Link>
-                </Footer.LinkGroup>
-              </div>
-              <div>
-                <Footer.Title title="Follow us" />
-                <Footer.LinkGroup col>
-                  <Footer.Link href="#">Facebook</Footer.Link>
-                  <Footer.Link href="#">Instagram</Footer.Link>
-                </Footer.LinkGroup>
-              </div>
-              <div>
-                <Footer.Title title="Legal" />
-                <Footer.LinkGroup col>
-                  <Footer.Link href="#">Privacy Policy</Footer.Link>
-                  <Footer.Link href="#">Terms & Conditions</Footer.Link>
-                </Footer.LinkGroup>
-=======
-      {/* Add Money Modal - Using FundWallet functionality */}
-      {showAddMoneyModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg w-full max-w-md">
-            <h2 className="text-2xl font-bold mb-4">Add Money to Wallet</h2>
-            
-            {message && (
-              <p className={`text-center mt-2 ${message.type === 'error' ? 'text-red-500' : 'text-green-500'}`}>
-                {message.text}
-              </p>
-            )}
-
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Amount</label>
-                <input
-                  type="number"
-                  name="amount"
-                  value={formData.amount}
-                  onChange={handleChange}
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter amount"
-                  required
-                />
-              </div>
-              
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowAddMoneyModal(false);
-                    setMessage(null);
-                  }}
-                  className="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                  disabled={loading}
-                >
-                  {loading ? 'Processing...' : 'Proceed to Payment'}
-                </button>
->>>>>>> 9901207eadb5181cc75d4530cb34acf3982d8b44
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       <Footer container className="bg-gray-900 mt-16">
         <div className="w-full max-w-7xl mx-auto">
@@ -252,18 +136,6 @@ const Services = () => {
                 Bridging the financial divide through innovative banking solutions.
               </p>
             </div>
-<<<<<<< HEAD
-          </div>
-          <Footer.Divider />
-          <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <Footer.Icon href="#" icon={BsFacebook} />
-              <Footer.Icon href="#" icon={BsInstagram} />
-              <Footer.Icon href="#" icon={BsTwitter} />
-              <Footer.Icon href="#" icon={BsGithub} />
-              <Footer.Icon href="#" icon={BsDribbble} />
-=======
             
             <div>
               <Footer.Title title="Company" className="text-white" />
@@ -302,14 +174,6 @@ const Services = () => {
               year={new Date().getFullYear()} 
               className="text-gray-400"
             />
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Footer.Icon href="#" icon={BsFacebook} className="text-gray-400 hover:text-white" />
-              <Footer.Icon href="#" icon={BsInstagram} className="text-gray-400 hover:text-white" />
-              <Footer.Icon href="#" icon={BsTwitter} className="text-gray-400 hover:text-white" />
-              <Footer.Icon href="#" icon={BsGithub} className="text-gray-400 hover:text-white" />
-              <Footer.Icon href="#" icon={BsDribbble} className="text-gray-400 hover:text-white" />
->>>>>>> 9901207eadb5181cc75d4530cb34acf3982d8b44
-            </div>
           </div>
         </div>
       </Footer>
