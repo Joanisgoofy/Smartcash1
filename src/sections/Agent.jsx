@@ -22,11 +22,7 @@ const Agent = () => {
                     <Link to="/about">About Us</Link>
                     <Link to="/agent">Become an Agent</Link>
                   </div>
-                  <div className='cta'>
-                    <Link to="/login">
-                      <button>Login / Signup</button>
-                    </Link>
-                  </div>
+                  
           
           
                 </header>
@@ -74,52 +70,66 @@ const Agent = () => {
                     </p>
                 </div>
             </section>
-            <Footer id="help" container className='bg-black'>
-                <div className="w-full">
-                  <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-                     <div className='logo'>
-                            <h1 className='text-gray-400'>Smart-OT</h1>
-                            <img src={Logo} alt="Smart-OT Logo" width="100" />
-                            </div>
-                    <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-                      <div>
-                        <Footer.Title title="about" />
-                        <Footer.LinkGroup col>
-                          <Footer.Link href="#">Flowbite</Footer.Link>
-                          <Footer.Link href="#">Tailwind CSS</Footer.Link>
-                        </Footer.LinkGroup>
-                      </div>
-                      <div>
-                        <Footer.Title title="Follow us" />
-                        <Footer.LinkGroup col>
-                          <Footer.Link href="#">Facebook</Footer.Link>
-                          <Footer.Link href="#">Instagram</Footer.Link>
-                        </Footer.LinkGroup>
-                      </div>
-                      <div>
-                        <Footer.Title title="Legal" />
-                        <Footer.LinkGroup col>
-                          <Footer.Link href="#">Privacy Policy</Footer.Link>
-                          <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-                        </Footer.LinkGroup>
-                      </div>
-                    </div>
-                  </div>
-                  <Footer.Divider />
-                  <div className="w-full sm:flex sm:items-center sm:justify-between">
-                    <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-                    <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-                      <Footer.Icon href="#" icon={BsFacebook} />
-                      <Footer.Icon href="#" icon={BsInstagram} />
-                      <Footer.Icon href="#" icon={BsTwitter} />
-                      <Footer.Icon href="#" icon={BsGithub} />
-                      <Footer.Icon href="#" icon={BsDribbble} />
-                    </div>
-                  </div>
-                </div>
-                
-              </Footer>
-            
+                 <Footer container className="bg-gray-900 mt-16">
+                   <div className="w-full max-w-7xl mx-auto">
+                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                       <div>
+                         <div className="flex items-center space-x-3 mb-4">
+                           <img src={Logo} alt="Smart-OT Logo" className="h-10" />
+                           <span className="text-xl font-semibold text-white">Smart-OT</span>
+                         </div>
+                         <p className="text-gray-400">
+                           Bridging the financial divide through innovative banking solutions.
+                         </p>
+                       </div>
+                       
+                       <div>
+                         <Footer.Title title="Company" className="text-white" />
+                         <Footer.LinkGroup col className="mt-4">
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">About Us</Footer.Link>
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Careers</Footer.Link>
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Newsroom</Footer.Link>
+                         </Footer.LinkGroup>
+                       </div>
+                       
+                       <div>
+                         <Footer.Title title="Support" className="text-white" />
+                         <Footer.LinkGroup col className="mt-4">
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Help Center</Footer.Link>
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Contact Us</Footer.Link>
+                           <Link to="/help" className="text-gray-400 hover:text-white">FAQs</Link>
+                         </Footer.LinkGroup>
+                       </div>
+                       
+                       <div>
+                         <Footer.Title title="Legal" className="text-white" />
+                         <Footer.LinkGroup col className="mt-4">
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Privacy Policy</Footer.Link>
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Terms of Service</Footer.Link>
+                           <Footer.Link href="#" className="text-gray-400 hover:text-white">Licenses</Footer.Link>
+                         </Footer.LinkGroup>
+                       </div>
+                     </div>
+                     
+                     <Footer.Divider className="my-8 border-gray-700" />
+                     
+                     <div className="w-full flex flex-col md:flex-row justify-between items-center">
+                       <Footer.Copyright 
+                         href="#" 
+                         by="Smart-OT™" 
+                         year={new Date().getFullYear()} 
+                         className="text-gray-400"
+                       />
+                       <div className="flex space-x-6 mt-4 md:mt-0">
+                         <Footer.Icon href="#" icon={BsFacebook} className="text-gray-400 hover:text-white" />
+                         <Footer.Icon href="#" icon={BsInstagram} className="text-gray-400 hover:text-white" />
+                         <Footer.Icon href="#" icon={BsTwitter} className="text-gray-400 hover:text-white" />
+                         <Footer.Icon href="#" icon={BsGithub} className="text-gray-400 hover:text-white" />
+                         <Footer.Icon href="#" icon={BsDribbble} className="text-gray-400 hover:text-white" />
+                       </div>
+                     </div>
+                   </div>
+                 </Footer>
         </>
     )
 }

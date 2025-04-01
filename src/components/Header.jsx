@@ -99,12 +99,19 @@ const Header = () => {
             <Link to="#" className="hover:text-blue-600  text-black" onClick={() => setIsOpen(false)}>Help & Support</Link>
             <Link to="/about" className="hover:text-blue-600  text-black" onClick={() => setIsOpen(false)}>About Us</Link>
             <Link to="/agent" className="hover:text-blue-600  text-black" onClick={() => setIsOpen(false)}>Become an Agent</Link>
+            <div className="hidden md:block">
+          {token ? (
+            <Button gradientDuoTone="cyanToBlue">{`Wallet Balance: ₦${wallet || "Not available"}`}</Button>
+          ): (
             <Link to="/login">
-              <Button gradientDuoTone="cyanToBlue" onClick={() => setIsOpen(false)}>Login / Signup</Button>
-            </Link>
+            <Button gradientDuoTone="cyanToBlue">Login / Signup</Button>
+          </Link>
+          )}
+        </div>
           </div>
         </nav>
       )}
+      
     </header>
   );
 };
