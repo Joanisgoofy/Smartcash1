@@ -27,7 +27,7 @@ ReactDOM.createRoot(root).render(
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/help" element={<Help />} />
-          <Route path="/fund" element={<FundWalletPage />} />
+          <Route path="/fund-wallet" element={<FundWalletPage />} />
           
     </Routes>
     </BrowserRouter>
